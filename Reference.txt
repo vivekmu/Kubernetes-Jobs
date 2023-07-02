@@ -6,3 +6,5 @@ docker push vivekkar/test:testjob
 k create -f Jobs.yaml
 k get job
 k get po
+
+command: ["script.sh"]
