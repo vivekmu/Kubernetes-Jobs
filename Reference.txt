@@ -1,0 +1,8 @@
+k delete job tt
+docker build -t tt .
+docker rmi vivekkar/test:testjob
+docker tag tt vivekkar/test:testjob
+docker push vivekkar/test:testjob
+k create -f Jobs.yaml
+k get job
+k get po
