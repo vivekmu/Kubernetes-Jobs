@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: tt
+spec:
+  backoffLimit: 1
+  template:
+    spec:
+      containers:
+      - name: tt
+        image: vivekkar/test:testjob
+        imagePullPolicy: Always
+        command:
+        - /bin/sh
+        - -c
+        - /scripts/script.sh
+        volumeMounts:
+        - name: script-dir
+          mountPath: /scripts
+      volumes:
+      - name: script-dir
+        hostPath:
+          path: /home/vivek/tt/Docker
+          type: DirectoryOrCreate
+      restartPolicy: Never
