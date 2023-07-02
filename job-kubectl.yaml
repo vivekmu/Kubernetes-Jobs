@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: testing-stuff
+  namespace: default
+spec:
+  template:
+    metadata:
+      name: testing-stuff
+    spec:
+      serviceAccountName: internal-kubectl
+      containers:
+      - name: tester
+        image: bitnami/kubectl:1.17.3
+        command:
+         - "bin/bash"
+         - "-c"
+         - "kubectl get pods"
+      restartPolicy: Never
